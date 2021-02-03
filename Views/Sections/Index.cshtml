@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LabbTsb.Models.Section>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/SideBar.css" rel="stylesheet" />
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="@Url.Action("Index","Home")">Startsida</a>
+    <a href="@Url.Action("index","employees")">Anställda</a>
+    <a href="@Url.Action("index","Sections")">Avdelningar</a>
+    <a href="@Url.Action("index","Api")">Hämta API</a>
+    
+</div>
+<div class="jumbotron">
+    <h4 class="rubrik">Lista över avdelningar som finns på Ukend AB</h4>
+</div>
+
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">
+                Avdelningar
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                <a class="link" asp-action="Edit" asp-route-id="@item.SectionId">Ändra</a> |
+                <a class= "link" asp-action="Details" asp-route-id="@item.SectionId">Egenskaper</a> |
+                <a class="link" asp-action="Delete" asp-route-id="@item.SectionId">Radera</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a class="link" asp-action="Create">Lägg till ny avdelning</a>
+</p>

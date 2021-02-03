@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/site.js"></script>
+<link href="~/css/SideBar.css" rel="stylesheet" />
+
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="@Url.Action("Startsida","Home")">Contact</a>
+    <a href="@Url.Action("index","employees")">Anställda</a>
+    <a href="@Url.Action("index","Sections")">Avdelningar</a>
+    <a href="@Url.Action("index","Api")">Hämta API</a>
+
+</div>
+
+<section class="jumbotron">
+    <div class="container">
+        <h1 class="jumbotron-heading">Välkommen</h1>
+        <p class="main-text">
+            Something short and leading about the collection below—its contents, the creator, etc.
+            Make it short and sweet, but not too short so folks don't simply skip over it entirely.
+        </p>
+        <p>
+            <button class="btn btn-secondary my-2">Visa någonting</button>
+        </p>
+    </div>
+    <div></div>
+</section>
+
+
+<div class="container-card" style="display:none">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="img-1" src="~/lib/images/sanfran.jpg" />
+                <div class="card-body">
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img id="img-1" src="~/lib/images/download.jpg" />
+                <div class="card-body">
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <a href='@Url.Action("index","employees")'>
+                    <img id="img-1" src="~/lib/images/NewYork.jpg" />
+                </a>
+                     <div class="card-body">
+                        <p class="card-text">
+                            This is a wider card with supporting text below as a natural lead-in to additional content.
+                            This content is a little bit longer.
+                        </p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="container">
+       <div class="row">
+           <div class="col-sm-3">
+               <a href='@Url.Action("index","employees")'>
+                   <img class="rounded" src="~/lib/images/download.jpg" />
+                   <p>Visa anställda på företaget här</p>
+               </a>
+           </div>
+      </div>
+    </div>
+
+
+
+
+
+       <a href='@Url.Action("index","employees")'>
+           <img class="rounded-circle" src="~/lib/images/download.jpg" />
+           <p>Visa anställda på företaget här</p>
+       </a>
+
+
+
+       <a href='@Url.Action("index","Api")'>
+           <img class="rounded-circle" src="~/lib/images/NewYork.jpg" style="height:200px" />
+           <p>Visa listan på städer här</p>
+       </a>
+
+
+
+
+       <a href='@Url.Action("index","employees")'>
+           <img class="rounded" src="~/lib/images/download.jpg" />
+           <p>Visa anställda på företaget här</p>
+       </a>*@
+
+
+
+

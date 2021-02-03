@@ -1,0 +1,45 @@
+﻿@model LabbTsb.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="rubrik1">Radera</h1>
+<link href="~/css/design.css" rel="stylesheet" />
+<h3 class="deleteRubrik">Är du säker på att du vill radera denna från anställdalistan?</h3>
+<div>
+    <h4>Anställda</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Section)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Section.SectionId)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id"  />
+        <input type="submit" value="Delete" class="btn btn-danger" />|
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

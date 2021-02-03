@@ -1,0 +1,42 @@
+﻿@model LabbTsb.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<link href="~/css/SideBar.css" rel="stylesheet" />
+<div>
+    <h4 class="rubrik">@Model.FirstName @Model.LastName</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Förnamn:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            Efternamn:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            Ålder:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+           Avdelning:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Section.Department)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Ändra på anställd</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
