@@ -15,14 +15,16 @@
 </div>
 
 <section class="jumbotron">
+    
     <div class="container">
         <h1 class="jumbotron-heading">Välkommen</h1>
         <p class="main-text">
-            Something short and leading about the collection below—its contents, the creator, etc.
-            Make it short and sweet, but not too short so folks don't simply skip over it entirely.
+            Vi på Ukend solutions löser allt som har med e-tjänster och API:er att göra. Klicka på gärna runt på vår sida för att
+            bl.a se våra anställda och på vilken arbetsavdelning de jobbar på. På hämta API kan du även ta del av vilka städer Ukend 
+            är verksamma i. Enjoy!!
         </p>
         <p>
-            <button class="btn btn-secondary my-2">Visa någonting</button>
+            <button class="btn btn-secondary my-2">Visa </button>
         </p>
     </div>
     <div></div>
@@ -30,43 +32,48 @@
 
 
 <div class="container-card" style="display:none">
+    <h4 class="rubrik">Alternativ</h4>
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-                <img class="img-1" src="~/lib/images/sanfran.jpg" />
-                <div class="card-body">
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img id="img-1" src="~/lib/images/download.jpg" />
-                <div class="card-body">
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <a href='@Url.Action("index","employees")'>
-                    <img id="img-1" src="~/lib/images/NewYork.jpg" />
+                <a href="Api">
+                    <img id="img-1" src="~/lib/images/sanfran.jpg" />
                 </a>
-                     <div class="card-body">
-                        <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to additional content.
-                            This content is a little bit longer.
-                        </p>
+                <div class="card-body">
+                    <p class="card-text">
+                        Genom att klicka på bilden kan du se vilka städer vi är verksamma i.
+                        Du kan även lägga til en ny stad om du vill. Just for fun!
+                    </p>
+                </div>
+            </div>
 
-                    </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <a href="Employees">
+                    <img id="img-1" src="~/lib/images/download.jpg" />
+                </a>
+                <div class="card-body">
+                    <p class="card-text">
+                        Genom att klicka på bilden så kan du se listan över våra anställda på Ukend.
+                        Här kan du också lägga till och ändra på personal om du vill. Just for fun!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <a href="Sections">
+                    <img id="img-1" src="~/lib/images/worksections.jpg" />
+                </a>
+                <div class="card-body">
+                    <p class="card-text">
+                        Genom att klicka på bilden kan du ta del av vilka olika arbetsavdelningar som finns på Ukend.
+                        Du kan även lägga till nya avdelningar om du vill. Just for fun!
+                    </p>
+
+                </div>
             </div>
         </div>
     </div>
@@ -74,40 +81,7 @@
 
 
 
-@*<div class="container">
-       <div class="row">
-           <div class="col-sm-3">
-               <a href='@Url.Action("index","employees")'>
-                   <img class="rounded" src="~/lib/images/download.jpg" />
-                   <p>Visa anställda på företaget här</p>
-               </a>
-           </div>
-      </div>
-    </div>
 
-
-
-
-
-       <a href='@Url.Action("index","employees")'>
-           <img class="rounded-circle" src="~/lib/images/download.jpg" />
-           <p>Visa anställda på företaget här</p>
-       </a>
-
-
-
-       <a href='@Url.Action("index","Api")'>
-           <img class="rounded-circle" src="~/lib/images/NewYork.jpg" style="height:200px" />
-           <p>Visa listan på städer här</p>
-       </a>
-
-
-
-
-       <a href='@Url.Action("index","employees")'>
-           <img class="rounded" src="~/lib/images/download.jpg" />
-           <p>Visa anställda på företaget här</p>
-       </a>*@
 
 
 

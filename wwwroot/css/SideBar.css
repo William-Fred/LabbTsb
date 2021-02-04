@@ -106,12 +106,12 @@
     display:block;
 
 }
-.kort{
+.card{
     border: solid;
-    border-color: #333333;
+    border-color: white;
 }
 
-.kort:hover {
-        border-color: aquamarine;
+.card:hover {
+        border-color: black;
         cursor: pointer;
     }
