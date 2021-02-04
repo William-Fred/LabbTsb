@@ -42,6 +42,10 @@ namespace LabbTsb.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCity(CitiesData cities)
         {
+            try
+            {
+
+           
             CitiesData receivedCity = new CitiesData();
             using (var httpClient = new HttpClient())
             {
@@ -54,6 +58,12 @@ namespace LabbTsb.Controllers
                 }
             }
             return View(receivedCity);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
         }
 
         public async Task<IActionResult> UpdateCity(int id)

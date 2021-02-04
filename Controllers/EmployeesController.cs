@@ -21,14 +21,26 @@ namespace LabbTsb.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-           
-            var employeeModel = _context.Employees.Include(e => e.Section);
-            return View(await employeeModel.ToListAsync());
+            try
+            {
+                var employeeModel = _context.Employees.Include(e => e.Section);
+                return View(await employeeModel.ToListAsync());
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
+            
         }
 
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            try
+            {
+
+           
             if (id == null)
             {
                 return NotFound();
@@ -41,15 +53,31 @@ namespace LabbTsb.Controllers
             {
                 return NotFound();
             }
-
+             
             return View(employee);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
         }
 
         // GET: Employees/Create
         public IActionResult Create()
         {
+            try
+            {
+
+            
             ViewData["SectionId"] = new SelectList(_context.Sections, "SectionId", "Department");
             return View();
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
         }
 
         // POST: Employees/Create
@@ -72,6 +100,9 @@ namespace LabbTsb.Controllers
         // GET: Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            try
+            {
+
             if (id == null)
             {
                 return NotFound();
@@ -84,6 +115,13 @@ namespace LabbTsb.Controllers
             }
             ViewData["SectionId"] = new SelectList(_context.Sections, "SectionId", "SectionId", employee.SectionId);
             return View(employee);
+
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
         }
 
         // POST: Employees/Edit/5
@@ -125,6 +163,10 @@ namespace LabbTsb.Controllers
         // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            try
+            {
+
+          
             if (id == null)
             {
                 return NotFound();
@@ -137,8 +179,14 @@ namespace LabbTsb.Controllers
             {
                 return NotFound();
             }
-
+           
             return View(employee);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
+            }
         }
 
         // POST: Employees/Delete/5
