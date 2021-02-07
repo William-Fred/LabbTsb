@@ -13,7 +13,7 @@
     <a href="@Url.Action("index","employees")">Anställda</a>
     <a href="@Url.Action("index","Sections")">Avdelningar</a>
     <a href="@Url.Action("index","Api")">Hämta API</a>
-   
+
 </div>
 
 
@@ -21,33 +21,43 @@
     <h4 class="rubrik">Lista över städer företaget har etablerat sig i</h4>
 </div>
 
+
+<div class="container" style="text-align:center; padding-bottom:20px;">
+    <a class="link" asp-action="AddCity">Lägg till ny stad</a>
+</div>
+
 <table class="table table-dark">
     <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Stad</th>
-            <th scope="col">Namn</th>
             <th scope="col">Postnummer</th>
             <th scope="col">Land</th>
         </tr>
     </thead>
     @foreach (var item in Model)
     {
-<tr>
-   
-    <td>@Html.DisplayFor(i => item.CitiesId)</td>
-    <td>@Html.DisplayFor(i => item.CityName)</td>
-    <td>@Html.DisplayFor(i => item.ZipCode)</td>
-    <td> @Html.DisplayFor(i => item.CountryName)</td>
-    <td>
-        <a class="link" asp-action="UpdateCity" asp-route-id="@item.CitiesId">Ändra</a>
-     </td>
-</tr>
+        <tr>
 
-}
+            <td>@Html.DisplayFor(i => item.CitiesId)</td>
+            <td>@Html.DisplayFor(i => item.CityName)</td>
+            <td>@Html.DisplayFor(i => item.ZipCode)</td>
+            <td> @Html.DisplayFor(i => item.CountryName)</td>
+            <td>
+                <form asp-action="DeleteCity" method="post">
+                    <input type="hidden" value="@item.CitiesId" name="CitiesId" />
+                    <input type="submit" value="Ta bort"
+                   style="background: none !important;
+                   border: none;
+                   padding: 0 !important;
+                   font-family: arial, sans-serif;
+                   color:darkcyan;
+                   cursor: pointer;" />
+                </form>
+            </td>
+
+        </tr>
+
+    }
 </table>
-
-<div>
-    <a class="link" asp-action="AddCity">Lägg till ny stad</a>
-</div>
 

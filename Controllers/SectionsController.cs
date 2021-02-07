@@ -21,7 +21,15 @@ namespace LabbTsb.Controllers
         // GET: Sections
         public async Task<IActionResult> Index()
         {
+            try
+            {
             return View(await _context.Sections.ToListAsync());
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View(await _context.Sections.ToListAsync());
+            }
         }
 
         // GET: Sections/Details/5

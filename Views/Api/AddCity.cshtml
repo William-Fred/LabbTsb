@@ -1,38 +1,40 @@
-﻿@model LabbTsb.Models.CitiesData
-@{
-    ViewData["Title"] = "AddCity";
-}
+﻿@model CitiesData
+
+@{ Layout = "_Layout"; }
 
 <link href="~/css/SideBar.css" rel="stylesheet" />
-<h4 class="rubrik">Lägg till en stad</h4>
 
+
+
+<h4 class="rubrik">Lägg till stad </h4>
 <form asp-action="AddCity" method="post">
     <div class="form-group">
-        <label for="CityName">Stad:</label>
+        <label for="Name">Namn på stad:</label>
         <input class="form-control" name="CityName" />
     </div>
     <div class="form-group">
-        <label for="ZipCode">Postnummer:</label>
+        <label for="StartLocation">Postnummer</label>
         <input class="form-control" name="ZipCode" />
     </div>
     <div class="form-group">
-        <label for="CountryName">Land:</label>
+        <label for="EndLocation">Landet staden ligger i:</label>
         <input class="form-control" name="CountryName" />
     </div>
     <div class="text-center panel-body">
         <button type="submit" class="btn btn-sm btn-dark">Lägg till</button>
     </div>
 </form>
+
 @if (Model != null)
 {
-    <h2>Ny stad</h2>
+    <h4 class="rubrik">Ny Stad</h4>
     <table class="table table-sm table-striped table-bordered m-2">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Name</th>
-                <th>Postnummer</th>
-                <th>Land</th>
+                <th>Start Location</th>
+                <th>End Location</th>
             </tr>
         </thead>
         <tbody>
@@ -41,15 +43,10 @@
                 <td>@Model.CityName</td>
                 <td>@Model.ZipCode</td>
                 <td>@Model.CountryName</td>
-                
             </tr>
         </tbody>
     </table>
 }
-<div class="container">
-    <div class="row">
-        <div class="col-1" style="text-align:center">
-            <a asp-action="Index" class="btn btn-sm btn-secondary">Tillbaka</a>
-        </div>
-    </div>
+<div class="container" style="margin-top:20px; text-align:center;">
+    <a asp-action="Index" class="btn btn-group-vertical btn-dark">Klar</a>
 </div>

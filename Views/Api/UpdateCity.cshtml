@@ -1,42 +1,39 @@
 ﻿@model LabbTsb.Models.CitiesData
-@{
-    ViewData["Title"] = "UpdateCity";
-}
 
+@{ Layout = "_Layout";}
 
-<h4 class="rubrik">Updatera staden @Model.CityName</h4>
-<a class="link" asp-action="Index">Tillbaka till listan</a>
+<h4 class="rubrik">Uppdatera stad</h4>
+
 <form method="post">
-
     <div class="form-group">
-         Id
+        <label asp-for="CitiesId"></label>
         <input class="form-control" asp-for="CitiesId" readonly />
     </div>
     <div class="form-group">
-        Stad
+        <label asp-for="CityName"></label>
         <input class="form-control" asp-for="CityName" />
     </div>
     <div class="form-group">
-        Postnummer
+        <label asp-for="ZipCode"></label>
         <input class="form-control" asp-for="ZipCode" />
     </div>
     <div class="form-group">
-        Land
+        <label asp-for="CountryName"></label>
         <input class="form-control" asp-for="CountryName" />
     </div>
     <div class="text-center panel-body">
-        <button type="submit" class="btn btn-sm btn-dark">Uppdatera</button>
+     <button type="submit" class="btn btn-sm btn-dark">Uppdatera</button>
     </div>
 </form>
 
-@if (ViewBag.Result == "All good!")
+@if (ViewBag.Result == "Success")
 {
-    <h2>Stad</h2>
+    <h2>Uppdaterad Stad</h2>
     <table class="table table-sm table-striped table-bordered m-2">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Stad</th>
+                <th>Namn</th>
                 <th>Postnummer</th>
                 <th>Land</th>
             </tr>
@@ -46,8 +43,9 @@
                 <td>@Model.CitiesId</td>
                 <td>@Model.CityName</td>
                 <td>@Model.ZipCode</td>
-                <td>@Model.CountryName</td>
+                <td>@Model.CityName</td>
             </tr>
         </tbody>
     </table>
 }
+<a asp-action="Index" class="btn btn-sm btn-dark">Tillbaka till listan</a>

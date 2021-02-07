@@ -10,21 +10,18 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
 
+
 namespace LabbTsb.Controllers
 {
     public class ApiController : Controller
     {
-        private readonly ILogger<ApiController> _logger;
-
-        public ApiController(ILogger<ApiController> logger)
-        {
-            _logger = logger;
-        }
-
+       
        
         //Hämta data från API
        public async Task<IActionResult> Index()
         {
+            try
+            {
             List<CitiesData> citiesList = new List<CitiesData>();
             using ( var HttpClient = new HttpClient())
             {
@@ -35,6 +32,13 @@ namespace LabbTsb.Controllers
 
                 }
                 return View(citiesList);
+            }
+            }
+            catch(Exception ex)
+            {
+                
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return View();
             }
         }
         //Lägga till ny stad i api
@@ -66,63 +70,101 @@ namespace LabbTsb.Controllers
             }
         }
 
-        public async Task<IActionResult> UpdateCity(int id)
-        {
 
-            CitiesData cities = new CitiesData();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("http://localhost:33255/api/Cities/" + id))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    cities = JsonConvert.DeserializeObject<CitiesData>(apiResponse);
-                }
-            }
-            return View(cities);
-        }
-        [HttpPost]
-        public async Task<IActionResult> UpdateCity(CitiesData cities)
-        {
-            try
-            {
 
-            
-            CitiesData receivedCity = new CitiesData();
+        //Jag kommenterade bort denna kod då jag inte fick det att fungera tyvärr.. 
+        //Så det man kan göra på sidan är att lägga till i API och ta bort från API
+        ////Uppdatera eller ändra stad.
+        //public async Task<IActionResult> UpdateCity(int id)
+        //{
+        //    try
+        //    {
+        //        CitiesData cities = new CitiesData();
+        //        using (var httpClient = new HttpClient())
+        //        {
+        //            using (var response = await httpClient.GetAsync("http://localhost:33255/api/Cities/" + id))
+        //            {
+        //                string apiResponse = await response.Content.ReadAsStringAsync();
+        //                cities = JsonConvert.DeserializeObject<CitiesData>(apiResponse);
+        //            }
+        //        }
+        //        return View(cities);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine(ex.Message);
+        //        return View();
+        //    }
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> UpdateCity(CitiesData city)
+        //{
+        //    try
+        //    {
+        //    CitiesData receivedCity = new CitiesData();
+        //    using (var httpClient = new HttpClient())
+        //    {
+
+        //        var content = new MultipartFormDataContent();
+        //        content.Add(new StringContent(city.CitiesId.ToString()), "CitiesId");
+        //        content.Add(new StringContent(city.CityName), "CityName");
+        //        content.Add(new StringContent(city.ZipCode), "ZipCode");
+        //        content.Add(new StringContent(city.CountryName), "CountryName");
+
+        //        using (var response = await httpClient.PutAsync("http://localhost:33255/api/Cities", content))
+        //        {
+        //            string apiResponse = await response.Content.ReadAsStringAsync();
+        //            ViewBag.Result = "Success";
+        //            receivedCity = JsonConvert.DeserializeObject<CitiesData>(apiResponse);
+        //        }
+        //    }
+        //    return View(receivedCity);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine(ex.Message);
+        //        return View("ErrorMessage","Home");
+        //    }
+        //}
+
+
+
+         //ta bort från api
+         [HttpPost]
+         public async Task<IActionResult> DeleteCity(int CitiesId)
+        {
+            try { 
             using(var httpClient = new HttpClient())
             {
-                var content = new MultipartFormDataContent();
-                content.Add(new StringContent(cities.CitiesId.ToString()), "CitiesId");
-                content.Add(new StringContent(cities.CityName), "CityName");
-                content.Add(new StringContent(cities.ZipCode), "ZipCode");
-                content.Add(new StringContent(cities.CountryName), "CountryName");
-
-                using (var response = await httpClient.PutAsync("http://localhost:33255/api/Cities", content))
+                using (var response = await httpClient.DeleteAsync("http://localhost:33255/api/Cities/" + CitiesId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    ViewBag.Result = "All good!";
-                    receivedCity = JsonConvert.DeserializeObject<CitiesData>(apiResponse);
+
                 }
             }
-            return View(receivedCity);
+            return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                return RedirectToAction("ErrorMessage", "home");
+                return View("Error","Api");
             }
         }
 
-
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+      
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        private readonly ILogger<ApiController> _logger;
+
+        public ApiController(ILogger<ApiController> logger)
+        {
+            _logger = logger;
+        }
+
     }
 }
